@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hls</title>
+    <link href="css/video-js.css" rel="stylesheet">
+    <script src="js/video.js"></script>
+    <script src="js/hls/videojs-contrib-hls.js"></script>
+
+</head>
+<body>
+<h1>hls</h1>
+
+<!--常用-->
+<video class="video-js vjs-default-skin vjs-big-play-centered"
+       controls preload="auto"
+       width="460" height="256"
+       data-setup='{}'>
+    <source src="http://192.168.5.23:8000/hls/test.m3u8" type="application/x-mpegURL">
+</video>
+
+<!--video-js标签-->
+<video-js class="vjs-default-skin vjs-big-play-centered"
+       controls preload="auto"
+       width="460" height="256"
+       data-setup='{}'>
+    <source src="http://192.168.5.23:8000/hls/test.m3u8" type="application/x-mpegURL">
+</video-js>
+
+<!--选择器-->
+<video id="test"
+       class="video-js vjs-default-skin vjs-big-play-centered"
+       controls preload="auto"
+       width="460" height="256">
+    <source src="http://192.168.5.23:8000/hls/test.m3u8" type="application/x-mpegURL">
+</video>
+
+<script>
+    // {}和data-setup一样,function为回调函数
+    var player = videojs("test", {
+        "autoplay":true
+    }, function (res) {
+        console.log(res)
+    });
+    player.play();
+</script>
+</body>
+</html>
